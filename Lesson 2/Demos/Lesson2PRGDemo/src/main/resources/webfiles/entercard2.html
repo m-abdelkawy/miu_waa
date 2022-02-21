@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter card 2</title>
+</head>
+<body>
+<form action="processpayment2" method="post" th:object="${payment}">
+    Name: <input type="text" th:field="*{name}"/><br/>
+    Credit card number: <input type="text" th:field="*{creditcardnumber}"/><br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Entry2</title>
+</head>
+<body>
+    <form action="process2" method="post" th:object="${student}">
+        First Name: <input type="text" th:field="*{firstName}"/><br/>
+        Do you want to receive our newsletter? <input type="checkbox" th:field="*{receiveNewsletter}" /><br>
+        Sex: <input type="radio" th:field="*{sex}" value="M" />Male
+        <input type="radio" th:field="*{sex}" value="F"/>Female<br/>
+        Select the house you want to live in
+        <select th:field="*{house}">
+            <option value="Gryffindor">Gryffindor</option>
+            <option value="Hufflepuff">Hufflepuff</option>
+        </select><br/>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

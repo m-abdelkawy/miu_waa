@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h3>Your shopping cart</h3>
+    <table>
+        <tr>
+            <td>Quantity</td>
+            <td>Product Number</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Total</td>
+            <td>Action</td>
+        </tr>
+        <tr th:each="product: ${productListInCart}">
+            <td th:text="${product.qty}"></td>
+            <td th:text="${product.product.productNumber}"></td>
+            <td th:text="${product.product.name}"></td>
+            <td th:text="${product.product.price}"></td>
+            <td th:text="${product.total}"></td>
+            <td>
+                <form action="removefromcart" method="post">
+                    <button type="submit" th:value="${product.product.productNumber}" name="productnumber">Remove</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <h3>Total</h3>
+    <h3 th:text="${total}"></h3>
+    <form action="products" method="get">
+        <button type="submit">Add product</button>
+    </form>
+</body>
+</html>
