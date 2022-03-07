@@ -22,7 +22,8 @@ public class BankController {
         Account account = accounts.get(accountNumber);
         if (account == null) {
             return new ResponseEntity<CustomErrorType>(
-                    new CustomErrorType("Account with number: " + accountNumber + " is not available!"),
+                    new CustomErrorType("Account with number: "
+                            + accountNumber + " is not available!"),
                     HttpStatus.NOT_FOUND
             );
         }
