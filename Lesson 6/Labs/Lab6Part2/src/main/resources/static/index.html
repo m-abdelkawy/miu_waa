@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <script type="application/javascript" src="app.js"></script>
+</head>
+
+<body>
+<div>
+    <div>
+        <table id="connectionStatus">
+            <thead>
+            <tr>
+                <th>Welcome user. Please enter you name</th>
+            </tr>
+            </thead>
+            <tbody id="connectionStatusBody">
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <div>
+            <div>
+                <button id="connect" type="button" onclick="connect()">Connect</button>
+                <button id="disconnect" type="button" onclick="disconnect()">Disconnect</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <textarea id="calcTxtBox" placeholder="Write your calc here..." required></textarea>
+                </div>
+                <button id="send" type="button" onclick="sendData();">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

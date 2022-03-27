@@ -3,23 +3,14 @@ package com.bankapp.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Document("accounts")
 public class Account {
-    @NotNull
-    @Min(value = 1, message = "account number must not be less than 1")
     @Id
     private int accountNumber;
-
-    @NotNull
-    @Size(min = 2, max = 30)
     private String accountHolder;
-
     private double balance;
     private List<BankTransaction> transactions;
 
@@ -70,25 +61,24 @@ public class Account {
     }
 
     public void deposit(double amount){
-        // 01. update balance
-        this.balance += amount;
-
-        // 02. create transaction
-        if(transactions == null){
-            transactions = new ArrayList<>();
-        }
-        transactions.add(new BankTransaction(TransactionType.DEPOSIT, amount));
+        operateTransaction(amount, TransactionType.DEPOSIT);
     }
 
     public void withdraw(double amount){
-        // 01. update balance
-        this.balance -= amount;
+        operateTransaction(amount, TransactionType.WITHDRAWAL);
+    }
 
-        // 02. create transaction
-        if(transactions == null){
+    private void operateTransaction(double amount, TransactionType transactionType){
+        if(transactionType.equals(TransactionType.DEPOSIT))
+            balance += amount;
+        else if(transactionType.equals(TransactionType.WITHDRAWAL))
+            balance -= amount;
+
+        if(transactions == null)
             transactions = new ArrayList<>();
-        }
-        transactions.add(new BankTransaction(TransactionType.WITHDRAWAL, amount));
+
+        BankTransaction transaction = new BankTransaction(transactionType, amount);
+        transactions.add(transaction);
     }
 
     @Override

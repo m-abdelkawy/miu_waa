@@ -1,0 +1,30 @@
+enum TransactionType {
+    DEPOSIT,
+    WITHDRAWAL
+}
+
+type BankTransaction{
+    transactionType: TransactionType!
+    amount: Float!
+    date: String!
+}
+
+
+type Account{
+    accountNumber: Int!
+    accountHolder: String!
+    balance: Float!
+    transactions: [BankTransaction]
+}
+
+type Query{
+    account(accountNumber: Int!): Account
+}
+
+type Mutation{
+    createAccount(accountNumber: Int!, accountHolder: String!): Account
+    deleteAccount(accountNumber: Int!): Boolean
+    deposit(accountNumber: Int!, amount: Float!): Account
+    withdraw(accountNumber: Int!, amount: Float!): Account
+}
+

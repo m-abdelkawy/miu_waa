@@ -1,0 +1,15 @@
+type Customer{
+customerId: String!
+name: String!
+email: String!
+phone: String!
+}
+
+type Query{
+customers(count: Int): [Customer]
+customer(customerId: Int): Customer
+}
+
+type Mutation{
+createCustomer(customerId: Int!, name: String!, email: String!, phone: String!): Customer
+}
