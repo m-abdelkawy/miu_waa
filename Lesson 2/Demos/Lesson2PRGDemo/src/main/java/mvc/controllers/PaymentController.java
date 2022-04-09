@@ -21,7 +21,8 @@ public class PaymentController {
     }
 
     @PostMapping("/processpayment")
-    public ModelAndView processPayment(@RequestParam("name") String name, @RequestParam("creditcardnumber") String cardnumber) {
+    public ModelAndView processPayment(@RequestParam("name") String name,
+                                       @RequestParam("creditcardnumber") String cardnumber) {
         System.out.println("Process order from: " + name + ", credit card number: " + cardnumber);
         ModelAndView mva = new ModelAndView();
         mva.setViewName("processpayment");
