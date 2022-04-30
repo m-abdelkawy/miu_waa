@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import CounterComponent from './components/CounterComponent';
+import Counter from './components/CounterComponent';
 import { useState } from 'react';
 
 function App() {
@@ -16,12 +16,12 @@ function App() {
         <table>
           <tbody>
             <tr>
-              <td><CounterComponent numState={state1} numCounter={1} setStateFunction={setState1}/></td>
-              <td><CounterComponent numState={state2} numCounter={3} setStateFunction={setState2}/></td>
+              <td><Counter value={1}/></td>
+              <td><Counter value={3}/></td>
             </tr>
             <tr>
-              <td><CounterComponent numState={state3} numCounter={5} setStateFunction={setState3}/></td>
-              <td><CounterComponent numState={state4} numCounter={8} setStateFunction={setState4}/></td>
+              <td><Counter value={5}/></td>
+              <td><Counter value={8}/></td>
             </tr>
           </tbody>
         </table>

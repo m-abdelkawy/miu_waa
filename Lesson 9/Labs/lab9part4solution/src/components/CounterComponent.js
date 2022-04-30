@@ -1,30 +1,25 @@
 import React, { useState } from "react";
 
-const CounterComponent = ({numState ,numCounter, setStateFunction})=>{
-   
-    const increment=()=>{
-        setStateFunction(numState+numCounter);
-    }
-
-    const decrement=()=>{
-        setStateFunction(numState-numCounter);
-    }
-
-    return (
-        <div>
-            <header>
-                <h3>{numState}</h3>
-            </header>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><button onClick={increment}>+ {numCounter}</button></td>
-                        <td><button onClick={decrement}>- {numCounter}</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    );
+const Counter = (props)=>{
+   let counterComponent=(
+       <div>
+           <h3>{props.counter}</h3>
+           <table>
+               <tbody>
+                   <tr>
+                       <td>
+                           <button onClick={()=>props.increment(props.value)}>+ {props.value}</button>
+                       </td>
+                       <td>
+                           <button onClick={()=>props.decrement(props.value)}>- {props.value}</button>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+       </div>
+   );
+    
+   return counterComponent;
 }
 
-export default CounterComponent;
+export default Counter;

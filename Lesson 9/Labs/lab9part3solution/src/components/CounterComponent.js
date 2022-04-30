@@ -1,30 +1,26 @@
 import React, { useState } from "react";
 
-const CounterComponent = ({numState ,numCounter, setStateFunction})=>{
-   
+const Counter = (props)=>{
+
+    const[counterValue, setCounterValue] = useState(0);
+
     const increment=()=>{
-        setStateFunction(numState+numCounter);
+        setCounterValue(counterValue + props.value);
     }
 
     const decrement=()=>{
-        setStateFunction(numState-numCounter);
+        setCounterValue(counterValue - props.value);
     }
 
-    return (
+    let counterComponent = (
         <div>
-            <header>
-                <h3>{numState}</h3>
-            </header>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><button onClick={increment}>+ {numCounter}</button></td>
-                        <td><button onClick={decrement}>- {numCounter}</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>{counterValue}</h3>
+            <br/>
+            <button onClick={increment}>+ {props.value}</button>
+            <button onClick={decrement}>- {props.value}</button>
         </div>
     );
+    return counterComponent;
 }
 
-export default CounterComponent;
+export default Counter;
