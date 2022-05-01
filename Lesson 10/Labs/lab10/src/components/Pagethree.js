@@ -1,86 +1,70 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export const Pagethree = (props) => {
+    // component state
+    const [creditcardnumber, setCreditcardnumber] = useState('');
+    const [type, setType] = useState('');
 
-    const personalInfo = props.location.state.personalInfo;
-    const address = props.location.state.address;
+    // State from the previous two pages
+    const { firstname, lastname, profession, street, city, zip, state } = props.location.state;
 
-    const [creditNumber, setCreditNumber] = useState('');
-    const [creditType, setCreditType] = useState('');
+const handleSubmit=()=>{
+    props.history.push("/pagefour",{
+        ...props.location.state,
+        creditcardnumber:creditcardnumber,
+        type: type
+    });
+}
 
-    const handleSubmit = () => {
-        props.history.push("/pagefour", {
-            personalInfo: {
-                firstName: personalInfo.firstName,
-                lastName: personalInfo.lastName,
-                profession: personalInfo.profession
-            },
-            address: {
-                street: address.street,
-                city: address.city,
-                zip: address.zip,
-                state: address.state
-            },
-            paymentInfo:{
-                creditNumber: creditNumber,
-                creditType: creditType
-            }
-        });
-    }
-
-    let page3 = (
+    let page = (
         <div>
             <div>
-                <div>First Name: {personalInfo.firstName}</div>
-                <div>Last Name: {personalInfo.lastName}</div>
-                <div>Profession: {personalInfo.profession}</div>
-                <br/>
-                <br/>
-                <div>Street: {address.street}</div>
-                <div>City: {address.city}</div>
-                <div>Zip: {address.zip}</div>
-                <div>State: {address.state}</div>
+                <h3>Personal Info</h3>
+                <p>First Name: {firstname}</p>
+                <p>Last Name: {lastname}</p>
+                <p>Profession: {profession}</p>
+                <h3>Address Info</h3>
+                <p>Street: {street}</p>
+                <p>City: {city}</p>
+                <p>Zip: {zip}</p>
+                <p>State: {state}</p>
             </div>
-            <br />
-            <form>
-
-                <table>
-                    <thead></thead>
-                    <tbody>
-
-                    <tr>
-                        <td>Credit Card Number: </td>
-                        <td>
-                            <input type="text"
-                                placeholder="Credit Card Number"
-                                value={creditNumber}
-                                onChange={e => setCreditNumber(e.target.value)} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Credit Card Type: </td>
-                        <td>
-                            <input type="radio"
-                                value="VISA"
-                                checked={creditType === 'VISA'}
-                                onChange={e => setCreditType(e.target.value)} /> VISA
-                        </td>
-                        <td>
-                            <input type="radio"
-                                value="Master Card"
-                                checked={creditType === 'Master Card'}
-                                onChange={e => setCreditType(e.target.value)} /> Master Card
-                        </td>
-                    </tr>
-                    <tr>
-                        <button onClick={handleSubmit}>Next</button>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </form>
-
+            <div>
+                <h3>Enter Payment Info:</h3>
+                <form>
+                    <table>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td>Credit Card Number</td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        placeholder='Credit Card Number'
+                                        value={creditcardnumber}
+                                        onChange={e => setCreditcardnumber(e.target.value)} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Credit Card Type:</td>
+                                <td>
+                                   <input type="radio" value="VISA" checked={type === 'VISA'} onChange={e=>setType(e.target.value)}/>VISA 
+                                </td>
+                                <td>
+                                    <input type="radio" value="Mastercard" checked={type==="Mastercard"} onChange={e=>setType(e.target.value)}/>Mastercard
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan="3">
+                                    <button onClick={handleSubmit}>Next</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
     );
-    return page3;
+
+    return page;
 }

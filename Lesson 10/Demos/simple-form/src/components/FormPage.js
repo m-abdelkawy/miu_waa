@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 
-export const FormPage=()=>{
+export const FormPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
-    //const name="Ahmed";
-    //const email="ahmed@gmail.com";
-
-    let formPage = (
+    let formElement = (
         <form>
-            <h3>Enter Login Info</h3>
             <div>
-                <input type="text" placeholder="name" value={name} onChange={e=>{setName(e.target.value)}}/>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={e => setName(e.target.value)} />
             </div>
             <div>
-                <input type="text" placeholder="email" value={email} onChange={e=>setEmail(e.target.value)}/>
+                <input
+                    type="text"
+                    placeholder="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)} />
             </div>
-            <button onClick={e=>{
-                alert(`your name is ${name}, your email is ${email}`);
+            <button onClick={e => {
+                alert(`Your name is ${name}\nYour email is ${email}`);
                 e.preventDefault();
             }}>Submit</button>
+
+            <p>Name: {name}</p>
+            <p>Email: {email}</p>
         </form>
     );
 
-    return formPage;
+    return formElement;
 }

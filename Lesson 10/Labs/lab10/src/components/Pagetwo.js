@@ -1,94 +1,92 @@
 import React, { useState } from "react";
 
 export const Pagetwo = (props) => {
-
-    const firstName = props.location.state.firstName;
-    const lastName = props.location.state.lastName;
-    const profession = props.location.state.profession;
-
+    // State of Page 2
     const [street, setStreet] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
     const [state, setState] = useState('');
 
+    // State from page 1
+    const { firstname, lastname, profession } = props.location.state;
+
+    // submit handler
     const handleSubmit = () => {
         props.history.push("/pagethree", {
-            personalInfo: {
-                firstName: firstName,
-                lastName: lastName,
-                profession: profession
-            },
-            address: {
-                street: street,
-                city: city,
-                zip: zip,
-                state: state
-            }
+            firstname: firstname,
+            lastname: lastname,
+            profession: profession,
+
+            street: street,
+            city: city,
+            zip: zip,
+            state: state
         });
     }
 
     let page2 = (
         <div>
             <div>
-                <div>First Name: {firstName}</div>
-                <div>Last Name: {lastName}</div>
-                <div>Profession: {profession}</div>
+                <h3>Personal Info</h3>
+                <p>First Name: {firstname}</p>
+                <p>Last Name: {lastname}</p>
+                <p>Profession: {profession}</p>
             </div>
-            <br />
-            <form>
-
-                <table>
-                    <thead>
-
-                    </thead>
-                    <tbody>
-
+            <div>
+                <h3>Enter Address Info: </h3>
+                <form>
+                    <table>
                         <tr>
-                            <td>Street: </td>
+                            <td>Street</td>
                             <td>
-                                <input type="text"
+                                <input
+                                    type="text"
                                     placeholder="Street"
                                     value={street}
                                     onChange={e => setStreet(e.target.value)} />
                             </td>
                         </tr>
                         <tr>
-                            <td>City: </td>
+                            <td>City</td>
                             <td>
-                                <input type="text"
+                                <input
+                                    type="text"
                                     placeholder="City"
                                     value={city}
                                     onChange={e => setCity(e.target.value)} />
                             </td>
                         </tr>
                         <tr>
-                            <td>Zip: </td>
+                            <td>Zip</td>
                             <td>
-                                <input type="text"
+                                <input
+                                    type="text"
                                     placeholder="Zip"
                                     value={zip}
                                     onChange={e => setZip(e.target.value)} />
                             </td>
                         </tr>
                         <tr>
-                            <td>State: </td>
+                            <td>State</td>
                             <td>
-                                <input type="text"
+                                <input
+                                    type="text"
                                     placeholder="State"
                                     value={state}
                                     onChange={e => setState(e.target.value)} />
                             </td>
                         </tr>
                         <tr>
-                            <button onClick={handleSubmit}>Next</button>
+                            <td colSpan="2">
+                                <button onClick={handleSubmit}>Next</button>
+                            </td>
                         </tr>
-                    </tbody>
+                    </table>
+                </form>
 
-                </table>
-
-            </form>
-
+            </div>
         </div>
     );
+
     return page2;
 }

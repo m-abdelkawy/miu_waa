@@ -7,14 +7,14 @@ function App() {
   let app = (
     <div>
       <BrowserRouter>
-        <Route exact path={["/", "/pageone"]} component={Pageone}/>
-        <Route path="/pagetwo" component={Pagetwo}/>
-        <Route path="/pagethree" component={Pagethree}/>
-        <Route path="/pagefour" component={Pagefour}/>
+        <Route exact path={["/", "/pageone"]} component={Pageone} />
+        <Route path={"/pagetwo"} component={Pagetwo} />
+        <Route path={"/pagethree"} component={Pagethree} />
+        <Route path={"/pagefour"} component={Pagefour} />
       </BrowserRouter>
     </div>
   );
-  return app; 
+  return app;
 }
 
 export default App;

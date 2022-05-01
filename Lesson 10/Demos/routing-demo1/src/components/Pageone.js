@@ -1,23 +1,20 @@
-import React from "react";
+import React from 'react';
 
-export const Pageone =(props)=>{
-
-    const nextPage = ()=>{
-        props.history.push("/pagetwo");
+export const Pageone = (props) => {
+    const nextPage=()=>{
+        props.history.push('/pagetwo');
     }
 
-    let page1 = (
-        <>
-        <h3>Page 1</h3>
-        <br/>
-        <br/>
-        <table>
-            <tr>
-                <th><button onClick={nextPage}>Next</button></th>
-            </tr>
-        </table>
-        </>
+    let page = (
+        <div>
+            <h3>Page 1</h3>
+            <br/>
+            <br/>
+            <div>
+                <button onClick={nextPage}>Next Page</button>
+            </div>
+        </div>
     );
 
-    return page1;
+    return page;
 }

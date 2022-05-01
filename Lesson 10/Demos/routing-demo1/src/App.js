@@ -2,47 +2,51 @@ import logo from './logo.svg';
 import './App.css';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { Homepage, Pageone, Pagethree, Pagetwo } from './components';
+import { Homepage, Pagefour, Pageone, Pagethree, Pagetwo } from './components';
 import { Switch } from 'react-router-dom';
 
 
 
 function App() {
-
   let app1 = (
-    <div>
+    <div className='App'>
       <BrowserRouter>
         <Route exact path={["/", "/pageone"]} component={Pageone} />
-        <Route path="/pagetwo" component={Pagetwo} />
-        <Route path="/pagethree" component={Pagethree} />
+        <Route path={"/pagetwo"} component={Pagetwo} />
+        <Route path={"/pagethree"} component={Pagethree} />
+        <Route path={"/pagefour"} component={Pagefour} />
       </BrowserRouter>
     </div>
   );
 
   let app2 = (
-    <div className='App'>
+    <div>
       <BrowserRouter>
-        <p><Link to="/">Home Page</Link></p>
-        <p><Link to="/pageone">Page one</Link></p>
-        <p><Link to="/pagetwo">Page two</Link></p>
+        <Link to={"/"}>Page 1</Link>
+        <Link to={"/pagetwo"}>Page 2</Link>
+        <Link to={"/pagethree"}>Page 3</Link>
+        <Link to={"/pagefour"}>Page 4</Link>
 
-        <Route path="/" exact>
-          <Homepage />
-        </Route>
-
-        <Route path="/pageone">
+        <Route exact path={["/", "/pageone"]}>
           <Pageone />
         </Route>
 
-        <Route path="/pagetwo">
+        <Route path={"/pagetwo"}>
           <Pagetwo />
         </Route>
 
+        <Route path={"/pagethree"}>
+          <Pagethree />
+        </Route>
+
+        <Route path={"/pagefour"}>
+          <Pagefour />
+        </Route>
       </BrowserRouter>
     </div>
   );
 
-  return app1;
+  return app2;
 }
 
 export default App;
