@@ -9,6 +9,9 @@ public class Account {
     private double balance;
     private List<BankTransaction> transactions;
 
+    public Account() {
+    }
+
     public Account(int accountNumber, String accountHolder) {
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;

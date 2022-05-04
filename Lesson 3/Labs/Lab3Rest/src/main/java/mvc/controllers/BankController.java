@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 public class BankController {
     Map<Integer, Account> accounts = new HashMap<>();
@@ -31,10 +32,18 @@ public class BankController {
         return new ResponseEntity<Account>(account, HttpStatus.OK);
     }
 
+//    @PostMapping("/accounts")
+//    public ResponseEntity<?> createAccount(@RequestParam int accountNumber, @RequestParam String accountHolder) {
+//        Account accountToAdd = new Account(accountNumber, accountHolder);
+//        this.accounts.put(accountNumber, accountToAdd);
+//        return new ResponseEntity<Account>(accountToAdd, HttpStatus.CREATED);
+//    }
+
     @PostMapping("/accounts")
-    public ResponseEntity<?> createAccount(@RequestParam int accountNumber, @RequestParam String accountHolder) {
-        Account accountToAdd = new Account(accountNumber, accountHolder);
-        this.accounts.put(accountNumber, accountToAdd);
+    public ResponseEntity<?> createAccount(@RequestBody Account account) {
+        Account accountToAdd = new Account(account.getAccountNumber(), account.getAccountHolder()
+        , account.getBalance());
+        this.accounts.put(account.getAccountNumber(), accountToAdd);
         return new ResponseEntity<Account>(accountToAdd, HttpStatus.CREATED);
     }
 

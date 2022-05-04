@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @RestController
 public class BookController {
     Map<String, Book> books = new HashMap<>();
 
     public BookController() {
-        /*List<Book> lstBook = new ArrayList<>() {{
+        List<Book> lstBook = new ArrayList<>() {{
             add(new Book("1111", "Ahmed Ali", "Structural Design", 37));
             add(new Book("2222", "John Doe", "JavaScript", 40));
             add(new Book("3333", "Mohammed Abdelkawy", "Object Oriented Programming", 25));
@@ -23,7 +24,7 @@ public class BookController {
 
         for (Book book : lstBook) {
             books.put(book.getIsbn(), book);
-        }*/
+        }
     }
 
     @GetMapping("/books")
