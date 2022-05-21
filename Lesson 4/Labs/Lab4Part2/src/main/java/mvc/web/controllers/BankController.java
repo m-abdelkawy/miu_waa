@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.websocket.server.PathParam;
 
+@CrossOrigin
 @RestController
 public class BankController {
     @Autowired
@@ -50,7 +52,7 @@ public class BankController {
     }
 
     @PostMapping("/accounts/{accountNumber}/deposit")
-    public ResponseEntity<?> deposit(@PathVariable int accountNumber, @RequestBody @Min(1) double amount) {
+    public ResponseEntity<?> deposit(@PathVariable int accountNumber, @PathParam("amount") @Min(1) double amount) {
         Account account = bankService.getAccount(accountNumber);
         ResponseEntity<?> res;
         if (account == null) {
@@ -64,7 +66,7 @@ public class BankController {
     }
 
     @PostMapping("/accounts/{accountNumber}/withdraw")
-    public ResponseEntity<?> withdraw(@PathVariable int accountNumber, @RequestBody double amount) {
+    public ResponseEntity<?> withdraw(@PathVariable int accountNumber, @PathParam("amount") double amount) {
         Account account = bankService.getAccount(accountNumber);
         ResponseEntity<?> res;
         if (account == null) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Collection;
 
+@CrossOrigin
 @RestController
 public class BooksController {
     @Autowired
